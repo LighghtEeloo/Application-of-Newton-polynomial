@@ -73,7 +73,7 @@ def func_1(x):
 
 num_iteration = 2
 power = 3
-num_lstx = num_iteration * power + 1
+num_lstx = power ** num_iteration + 1
 num_start = -round(num_lstx/2)
 lstx = [x for x in range(num_start, num_start + num_lstx)]
 lsty = []
