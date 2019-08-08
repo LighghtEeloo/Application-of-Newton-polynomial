@@ -68,11 +68,11 @@ def newton(lstx, lsty):
 
 
 def func_1(x):
-    return x ** 3 + x ** 2 + x ** 1 + 1
+    return x ** 2 + 3 * x ** 1 - 1
 
 
-num_iteration = 2
-power = 3
+num_iteration = 3
+power = 2
 num_lstx = power ** num_iteration + 1
 num_start = -round(num_lstx/2)
 lstx = [x for x in range(num_start, num_start + num_lstx)]
