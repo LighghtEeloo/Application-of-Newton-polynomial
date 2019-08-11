@@ -2,9 +2,12 @@
 
 
 def iterate(f, x, n):
-    for i in range(n):
-        x = f(x)
-    return x
+    for k in range(n):
+        ret = 0
+        for i in range(len(f)):
+            ret += f[i] * (x ** i)
+        x = ret
+    return ret
 
 
 def divided_difference(lstx, lstd, n):
@@ -66,18 +69,27 @@ def newton(lstx, lsty):
 # lsty = [0, 1, 16, 81, 256]
 # print(newton(lstx, lsty))
 
+def poly_init(poly, num_iteration):
+    power = len(poly) - 1
+    num_lstx = power ** num_iteration + 1
+    num_start = -round(num_lstx / 2)
+    lstx = [x for x in range(num_start, num_start + num_lstx)]
+    lsty = []
+    for x in lstx:
+        lsty.append(iterate(poly, x, num_iteration))
+    print("x:", lstx, "y:", lsty, sep="\n")
+    return newton(lstx, lsty)
 
-def func_1(x):
-    return x ** 2 + 3 * x ** 1 - 1
 
+if __name__ == "__main__":
+    default = 0
 
-num_iteration = 3
-power = 2
-num_lstx = power ** num_iteration + 1
-num_start = -round(num_lstx/2)
-lstx = [x for x in range(num_start, num_start + num_lstx)]
-lsty = []
-for x in lstx:
-    lsty.append(iterate(func_1, x, num_iteration))
-print(lstx, lsty)
-print(newton(lstx, lsty))
+    if default:
+        poly = [-1, 3, 1]
+        num_iteration = 3
+    elif not default:
+        poly = [float(i) for i in input("Enter the polynomial's indeterminates, from a_0 to a_n, split by \",\" : ").split(",")]
+        num_iteration = int(input("Enter the number of time to composite: "))
+
+    print(poly_init(poly, num_iteration))
+    input("Enter 0 to continue...\n")
