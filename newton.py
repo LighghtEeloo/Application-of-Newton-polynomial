@@ -88,7 +88,7 @@ if __name__ == "__main__":
         poly = [-1, 3, 1]
         num_iteration = 3
     elif not default:
-        poly = [float(i) for i in input("Enter the polynomial's indeterminates, from a_0 to a_n, split by \",\" : ").split(",")]
+        poly = [float(i) for i in input("Enter the polynomial's coefficients, from a_0 to a_n, split by \",\" : ").split(",")]
         num_iteration = int(input("Enter the number of time to composite: "))
 
     print(poly_init(poly, num_iteration))
